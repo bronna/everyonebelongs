@@ -1,0 +1,20 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --deep-forest: #1A6B4A;
+  --warm-cream: #F7F3ED;
+  --lavender: #CFA4CC;
+  --sky-blue: #7DBDE5;
+  --mango: #F5AB54;
+  --poppy: #EE5A36;
+  --near-black: #222222;
+}
+
+body {
+  background: var(--deep-forest);
+  font-family: 'DM Sans', sans-serif;
+}
