@@ -52,17 +52,7 @@
   <WildFlower color="rgba(245,171,84,0.4)" center="#EE5A36" size={22} opacity={0.35} style="position:absolute;bottom:240px;right:340px"/>
   <Squiggle color="rgba(207,164,204,0.35)" width={120} style="position:absolute;top:180px;left:70px;transform:rotate(-8deg)"/>
 
-  <!-- <div style="position:absolute;right:-80px;top:50%;transform:translateY(-55%);width:560px;height:560px;opacity:0.08">
-    <Blob color="#F7F3ED" style="width:100%;height:100%"/>
-  </div> -->
-
   <div class="content">
-    <!-- Badge -->
-    <div class="badge" class:visible>
-      <Pansy color="#CFA4CC" center="#F5AB54" size={18}/>
-      <span>Advocating for Every Student</span>
-    </div>
-
     <h1 class="headline" class:visible>
       Everyone<br/>
       Belongs
@@ -74,7 +64,7 @@
 
     <div class="cta-row" class:visible>
       <p class="hero-body">
-        We fight so that students with disabilities are seen, heard, and fully included — in classrooms, in hallways, and in life. Not as an afterthought. <em>As a right.</em>
+        It's every student's right to be fully supported, included, and valued in their school community.
       </p>
       <div class="btn-col">
         <button

@@ -4,12 +4,22 @@
   export let style = '';
 
   const SK = '#2b1d0e';
-  const SW = '2';
-  const SWT = '1.4';
+  const SW = '0';
+  const SWT = '0';
 </script>
 
 <svg viewBox="0 0 60 70" width={size} height={size * 1.2}
   style="display:inline-block;overflow:visible;{style}">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.04" numOctaves="3" seed="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="roughMed" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.045" numOctaves="3" seed="14" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
   <path d="M30,65 C30,50 28,35 30,10" fill="none" stroke={SK} stroke-width={SW} stroke-linecap="round" filter="url(#rough)"/>
   <path d="M30,40 C20,30 12,18 20,12 C26,8 30,22 30,28" fill={color} stroke={SK} stroke-width={SWT} stroke-linejoin="round" filter="url(#roughMed)"/>
   <path d="M30,28 C34,20 42,10 48,14 C52,18 44,28 30,34" fill={color} stroke={SK} stroke-width={SWT} stroke-linejoin="round" filter="url(#roughMed)"/>

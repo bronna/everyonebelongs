@@ -2,9 +2,9 @@
 
 ## 1. Overview & Identity
 
-Everyone Belongs is an advocacy and resource hub focused on inclusion in Oregon schools, aimed at parents of students with IEPs and community members. It combines data transparency (via the Inclusion Data Explorer), advocacy content (via a blog), and community participation (via a flower drawing + story feature) into a single site.
+Everyone Belongs is an advocacy and resource hub focused on inclusion in public schools, aimed at parents of students with IEPs and community members. It combines data transparency (via the Inclusion Data Explorer), advocacy content (via a blog), and community participation (via a flower drawing + story feature) into a single site.
 
-The site is published under a new project/organization name (to be finalized). It is not a personal blog or tied to an existing organization.
+The site is published under a new project/organization name -- Everyone Belongs. It is not a personal blog or tied to an existing organization.
 
 The tone is a mix of authoritative and warm: data and policy content is clear, factual, and grounded; parent-facing content is welcoming, empowering, and accessible. The site does not editorialize within the data explorer itself but does take a clear advocacy stance in blog content and resource recommendations.
 

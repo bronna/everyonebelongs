@@ -58,7 +58,7 @@
         <SmallLeaf color="var(--deep-forest)" size={16} rotate={20} style="opacity:0.7"/>
         <Clover color="var(--lavender)" size={20} style="opacity:0.8"/>
       </div>
-      <h2 class="heading">Four Ways We Fight</h2>
+      <h2 class="heading">Four Ways We Show Up</h2>
     </div>
 
     <div class="grid">
