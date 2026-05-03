@@ -15,7 +15,7 @@
   import RoughBg from '../ui/RoughBg.svelte';
 
   const involvedCards = [
-    { bg: 'var(--poppy)',       fg: '#fff',    FlowerComp: Tulip,     fc: 'rgba(255,255,255,0.2)',    label: 'Donate',         body: 'Your gift funds advocacy, legal support, and family resources.',                                            cta: 'Give Now'      },
+    { bg: 'var(--poppy)',       fg: '#fff',    FlowerComp: Tulip,     fc: 'rgba(255,255,255,0.2)',    label: 'Contact Us',     body: 'Have a question, a story to share, or want to connect with our team?',                                      cta: 'Get in Touch', href: '/contact' },
     { bg: 'var(--deep-forest)', fg: '#F7F3ED', FlowerComp: WildFlower, fc: 'rgba(247,243,237,0.18)', label: 'Volunteer',      body: 'Help us show up in school board meetings, run workshops, and support families.',                             cta: 'Get Involved'  },
     { bg: 'var(--mango)',       fg: '#222',    FlowerComp: Daisy,     fc: 'rgba(34,34,34,0.15)',      label: 'Spread the Word', body: 'Follow us, share our work, and bring the conversation to your community.', cta: 'Share Now'     },
   ];
@@ -58,10 +58,8 @@
       </div>
 
       <div class="cards-grid">
-        {#each involvedCards as d, i}
-          <div
-            class="card"
-          >
+        {#each involvedCards as d}
+          <svelte:element this={d.href ? 'a' : 'div'} href={d.href ?? null} class="card">
             <RoughBg color={d.bg}/>
             <div class="flower-watermark">
               <svelte:component this={d.FlowerComp} color={d.fc} center={d.fc} size={72}/>
@@ -74,7 +72,7 @@
                 {d.cta} <ArrowDoodle color={d.fg} style="width:40px;height:26px"/>
               </div>
             </div>
-          </div>
+          </svelte:element>
         {/each}
       </div>
     </div>
@@ -184,6 +182,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    text-decoration: none;
   }
   .card:hover {
     box-shadow: 6px 6px 0 var(--near-black);

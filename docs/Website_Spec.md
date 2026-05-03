@@ -6,13 +6,13 @@ Everyone Belongs is an advocacy and resource hub focused on inclusion in public 
 
 The site is published under a new project/organization name -- Everyone Belongs. It is not a personal blog or tied to an existing organization.
 
-The tone is a mix of authoritative and warm: data and policy content is clear, factual, and grounded; parent-facing content is welcoming, empowering, and accessible. The site does not editorialize within the data explorer itself but does take a clear advocacy stance in blog content and resource recommendations.
+The tone is a mix of authoritative, friendly, defiant, and warm: data and policy content is clear, factual, and grounded; parent-facing content is welcoming, empowering, and accessible. The site does not editorialize within the data explorer itself but does take a clear advocacy stance in blog content and resource recommendations.
 
 ---
 
 ## 2. Site Structure
 
-Four pages at launch:
+Six pages at launch:
 
 ### Home (`/`)
 
@@ -25,25 +25,33 @@ The landing page and primary entry point. It serves multiple roles without requi
 - **Resources**: Links to advocacy guides, questions to ask your district, Oregon-specific organizations, and relevant tools.
 - **Contact**: A simple contact section or form at the bottom.
 
-### Blog (`/blog`)
-
-A list of blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/blog/[slug]`.
-
 ### Data Explorer (`/explore`)
 
 The full Inclusion Data Explorer as specified in the separate explorer design spec. Self-contained component that slots into the site layout.
 
-### About (`/about`)
+### Resources (`/resources`)
+
+Blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/blog/[slug]`. This section also includes evergreen resources, which could be sticky blogposts or a sidebar of links.
+
+### Our Mission (`/about`)
 
 Mission statement, background on the project, information about the people behind it, and context for why the site exists.
+
+### Contact (`/contact`)
+
+A simple form to contact us with. Email and name required, with a text box for someone to write their message. Also displays the email (yet to be created) where they can contact us via email.
+
+### Take Action (`/action`)
+
+A more pronounced call-to-action button. This page has current action alerts, for example calling a certain legislator, submitting testimony at a specific hearing, or showing up at a school board meeting. If no current action items, then a word of encouragement (and encouragement to rest).
 
 ---
 
 ## 3. Navigation
 
-A simple top nav bar with four items: Home, Blog, Explore, About. The nav uses the Deep Forest background with white text. On mobile, it collapses to a hamburger menu. The project name/logo appears at the left of the nav bar and links home.
+A simple top nav bar with five items: Explore, Resources, Our Mission, Contact, Take Action. 'Take Action' is a prominent call-to-action button. On mobile, the navigation collapses to a hamburger menu. The project name/logo appears at the left of the nav bar and links home.
 
-The nav is part of a shared SvelteKit layout (`+layout.svelte`) that wraps all pages. The footer is similarly shared: Deep Forest background, links to Contact, Resources, About, and any relevant external organizations.
+The nav is part of a shared SvelteKit layout (`+layout.svelte`) that wraps all pages. The footer is similarly shared: links to Contact, Resources, About, and any relevant external organizations.
 
 ---
 
@@ -84,7 +92,7 @@ Both are Google Fonts, loaded via the standard Google Fonts link or self-hosted 
 
 ### Spacing & Layout
 
-Mobile-first responsive design. Content max-width around 720–800px for readability. Generous whitespace. Cards use rounded corners (border-radius 8–12px). The overall feel is open and breathable, not dense.
+Mobile-first responsive design. Content max-width around 720–800px for readability. Generous whitespace. Cards only when needed. The overall feel is open and breathable, not dense.
 
 ---
 
@@ -96,7 +104,7 @@ Blog posts are Markdown (or MDX) files stored in the repo, e.g., `/src/content/b
 
 - `title`
 - `date`
-- `category` (e.g., Policy, Data, Stories, Resources)
+- `category` (e.g., Policy, Data, Stories, Resources) - there can be multiple
 - `excerpt`
 - `image` (optional, URL to Cloudinary-hosted image)
 - `slug`
@@ -109,7 +117,7 @@ Blog images are hosted on Cloudinary (free tier) to keep the repo lean. Frontmat
 
 ### Blog Index
 
-The `/blog` page lists all posts in reverse chronological order, with category tag filters. Each post card shows the title, date, category tag (color-coded using the accent palette), and excerpt.
+The `/blog` page lists all posts in reverse chronological order, with category tag filters. Each post blurb shows the title, date, category tag (color-coded using the accent palette), and excerpt.
 
 ### Migration Path
 
@@ -164,14 +172,18 @@ The site owner (Brianna) reviews submissions in the Netlify Forms dashboard. App
   /routes
     +layout.svelte          — shared nav, footer
     +page.svelte            — home page
-    /blog
-      +page.svelte          — blog index
-      /[slug]
-        +page.svelte        — individual post
     /explore
       +page.svelte          — data explorer
-    /about
-      +page.svelte          — about page
+    /resources
+      +page.svelte          — resources and blog index
+      /[slug]
+        +page.svelte        — individual post
+    /mission
+      +page.svelte          — our mission/about page
+    /contact
+      +page.svelte          - simple form and email address
+    /action
+      +page.svelte          - current action alerts
   /content
     /blog                   — markdown files for posts
   /data
