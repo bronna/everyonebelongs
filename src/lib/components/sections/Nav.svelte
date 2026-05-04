@@ -16,14 +16,18 @@
     return () => window.removeEventListener('scroll', fn);
   });
 
-  const links = ['Our Mission', 'Stories', 'Resources', 'Get Involved'];
+  const links = [
+    { label: 'Explore Districts', href: '/explore' },
+    { label: 'Resources',         href: '/resources' },
+    { label: 'Our Mission',       href: '/about' },
+  ];
 
   function closeMenu() { menuOpen = false; }
 </script>
 
 <nav class:scrolled class:menu-open={menuOpen}>
   <div class="inner">
-    <div class="logo-wrap">
+    <a href="/" class="logo-wrap">
       <svg viewBox="0 0 42 42" width="40" height="40" style="flex-shrink:0">
         <circle cx="21" cy="21" r="19" fill="none" filter="url(#rough)"/>
         <g transform="translate(8,11) scale(0.38)"><Pansy color="#CFA4CC" center="#F5AB54" size={36}/></g>
@@ -33,17 +37,17 @@
         <g transform="translate(24,22) scale(0.34)"><WildFlower color="#F5AB54" center="#EE5A36" size={30}/></g>
       </svg>
       <span class="brand">Everyone Belongs</span>
-    </div>
+    </a>
 
     <!-- Desktop nav -->
     <div class="nav-right">
       {#each links as l}
-        <a href="#" class="nav-link">{l}</a>
+        <a href={l.href} class="nav-link">{l.label}</a>
       {/each}
-      <button class="cta-btn">
+      <a href="/#get-involved" class="cta-btn">
         <RoughBg color="var(--poppy)"/>
         <span style="position:relative;z-index:1">Take Action</span>
-      </button>
+      </a>
     </div>
 
     <!-- Hamburger -->
@@ -58,12 +62,12 @@
   {#if menuOpen}
     <div class="mobile-menu" class:scrolled>
       {#each links as l}
-        <a href="#" class="mobile-link" on:click={closeMenu}>{l}</a>
+        <a href={l.href} class="mobile-link" on:click={closeMenu}>{l.label}</a>
       {/each}
-      <button class="cta-btn mobile-cta" on:click={closeMenu}>
+      <a href="/#get-involved" class="cta-btn mobile-cta" on:click={closeMenu}>
         <RoughBg color="var(--poppy)"/>
         <span style="position:relative;z-index:1">Take Action</span>
-      </button>
+      </a>
     </div>
   {/if}
 </nav>
@@ -106,6 +110,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
   }
   .brand {
     font-family: 'Rubik', sans-serif;

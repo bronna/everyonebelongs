@@ -64,7 +64,7 @@
 
     <div class="cta-row" class:visible>
       <p class="hero-body">
-        Envisioning a world where every child is fully supported, included, and valued in their school community.
+        Every child deserves to be fully supported, included, and valued in their school community.
       </p>
       <div class="btn-col">
         <button

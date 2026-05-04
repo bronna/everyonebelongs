@@ -29,7 +29,7 @@
   }
 </script>
 
-<section class="get-involved">
+<section class="get-involved" id="get-involved">
   <div class="inner">
     <div class="grid-main">
       <div class="left">
