@@ -14,16 +14,6 @@
 
 <svg viewBox="0 0 60 60" width={size} height={size}
   style="display:inline-block;overflow:visible;opacity:{opacity};{style}">
-  <defs>
-    <filter id="roughStrong" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.05" numOctaves="4" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <filter id="petal" x="-12%" y="-12%" width="124%" height="124%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.06" numOctaves="2" seed="9" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
   {#each [0, 72, 144, 216, 288] as a}
     <ellipse
       cx={cx(a)} cy={cy(a)}

@@ -46,7 +46,15 @@ The interactive flower drawing tool. Users draw a flower using a simple canvas t
 
 A top nav bar with three text links and one CTA button: **Explore Districts** (`/explore`) · **Resources** (`/resources`) · **Our Mission** (`/about`) + **Take Action** button (anchors to `/#get-involved` on the home page). On mobile, the navigation collapses to a hamburger menu. The project name/logo appears at the left of the nav bar and links home (`/`).
 
-The nav and footer are both part of the shared SvelteKit layout (`+layout.svelte`) and wrap all pages automatically. The footer includes links to Resources, Our Mission, and any relevant external organizations.
+The nav and footer are both part of the shared SvelteKit layout (`+layout.svelte`) and wrap all pages automatically.
+
+The footer has a near-black background and three link columns:
+
+- **Resources** — Explore Districts, IEP Guides, Know Your Rights, Policy & Data
+- **About** — Our Mission, Community Garden, Contact Us
+- **Community** — hello@yeseveryonebelongs.org, Take Action, Draw Your Flower, Volunteer
+
+Below the columns: the brand name + tagline on the left, social platform icons on the right (Bluesky, Instagram, Substack, LinkedIn). A bottom bar shows the copyright and the site tagline "Made with love & defiance."
 
 ---
 
@@ -221,8 +229,6 @@ Push to GitHub → Netlify auto-builds and deploys. No CI/CD configuration beyon
 - **No commenting system on blog posts.** Could add later (e.g., Giscus for GitHub-based comments) but not at launch.
 - **No real-time flower gallery.** Submissions are manually reviewed and added.
 - **No search functionality across the site.** Blog is browsable by category; the explorer has its own district search. Full-site search is a future feature.
-- **No analytics at launch.** Can add privacy-respecting analytics (e.g., Plausible, Fathom) later.
-- **No newsletter or email list.** Could add a signup form later, but not at launch.
 - **No multi-language support.** English only for now.
 - **No dark mode.** The warm cream + forest palette is designed for light mode. Dark mode is a future consideration.
 
