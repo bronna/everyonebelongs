@@ -26,7 +26,7 @@
     {
       title: 'Community',
       links: [
-        { label: 'hello@yeseveryonebelongs.org', href: 'mailto:hello@everyonebelongs.org' },
+        { label: 'hello@yeseveryonebelongs.org', href: 'mailto:hello@yeseveryonebelongs.org' },
         { label: 'Take Action',        href: '/#get-involved' },
         { label: 'Draw Your Flower',   href: '/garden' },
         { label: 'Volunteer',          href: '/#get-involved' },

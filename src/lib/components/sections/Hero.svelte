@@ -67,17 +67,13 @@
         Embracing the right of every child to be fully supported, included, and valued in their school community.
       </p>
       <div class="btn-col">
-        <button
-          class="btn-primary"
-        >
+        <a href="/#get-involved" class="btn-primary">
           <RoughBg color="var(--poppy)"/>
           <span style="position:relative;z-index:1">Join the Movement</span>
-        </button>
-        <button
-          class="btn-secondary"
-        >
+        </a>
+        <a href="/about" class="btn-secondary">
           Learn Our Story <ArrowDoodle color="rgba(247,243,237,0.7)" style="display:inline-block;vertical-align:middle;margin-left:4px"/>
-        </button>
+        </a>
       </div>
     </div>
 
@@ -202,6 +198,9 @@
     gap: 20px;
     padding-top: 4px;
     flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    text-decoration: none;
   }
   .btn-primary {
     position: relative;

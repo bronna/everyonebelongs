@@ -74,7 +74,7 @@
     </div>
 
     <div class="cta-row">
-      <a href="/blog" class="all-posts-btn">View all posts</a>
+      <a href="/resources" class="all-posts-btn">View all posts</a>
     </div>
 
     <p class="placeholder-note">⚙ Placeholder — wire up to <code>/src/content/blog/</code> markdown files when posts are ready</p>

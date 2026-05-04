@@ -15,7 +15,7 @@
   import RoughBg from '../ui/RoughBg.svelte';
 
   const involvedCards = [
-    { bg: 'var(--poppy)',       fg: '#fff',    FlowerComp: Tulip,     fc: 'rgba(255,255,255,0.2)',    label: 'Contact Us',     body: 'Have a question, a story to share, or want to connect with our team?',                                      cta: 'Get in Touch', href: '/contact' },
+    { bg: 'var(--poppy)',       fg: '#fff',    FlowerComp: Tulip,     fc: 'rgba(255,255,255,0.2)',    label: 'Contact Us',     body: 'Have a question, a story to share, or want to connect with our team?',                                      cta: 'Get in Touch', href: '/about' },
     { bg: 'var(--deep-forest)', fg: '#F7F3ED', FlowerComp: WildFlower, fc: 'rgba(247,243,237,0.18)', label: 'Volunteer',      body: 'Help us show up in school board meetings, run workshops, and support families.',                             cta: 'Get Involved'  },
     { bg: 'var(--mango)',       fg: '#222',    FlowerComp: Daisy,     fc: 'rgba(34,34,34,0.15)',      label: 'Spread the Word', body: 'Follow us, share our work, and bring the conversation to your community.', cta: 'Share Now'     },
   ];
