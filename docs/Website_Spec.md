@@ -12,7 +12,7 @@ The tone is a mix of authoritative, friendly, defiant, and warm: data and policy
 
 ## 2. Site Structure
 
-Six pages at launch:
+Five pages at launch:
 
 ### Home (`/`)
 
@@ -20,10 +20,9 @@ The landing page and primary entry point. It serves multiple roles without requi
 
 - **Hero section**: The "Everyone Belongs" flower logo, a tagline, and a brief statement of purpose.
 - **Data Explorer teaser**: A search input with a headline like "How inclusive is your district?" that links to the full explorer at `/explore`.
-- **Recent blog posts**: 2–3 recent post cards with category tags.
-- **Community flower garden**: An interactive section where users can draw a flower on a canvas and submit it along with a short "share your story of inclusion" text. Approved flowers are periodically added to the logo or displayed in a rotating gallery.
-- **Resources**: Links to advocacy guides, questions to ask your district, Oregon-specific organizations, and relevant tools.
-- **Contact**: A simple contact section or form at the bottom.
+- **Recent blog posts**: 2–3 recent post cards with category tags linking to `/resources`.
+- **Community flower garden teaser**: A section highlighting the flower garden feature with a prominent "Draw Your Flower" CTA linking to `/garden`. Approved community flowers are displayed here.
+- **Get Involved**: Ways to volunteer, spread the word, and contact the team. Anchored at `#get-involved` for direct linking from the nav "Take Action" CTA.
 
 ### Data Explorer (`/explore`)
 
@@ -31,27 +30,23 @@ The full Inclusion Data Explorer as specified in the separate explorer design sp
 
 ### Resources (`/resources`)
 
-Blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/blog/[slug]`. This section also includes evergreen resources, which could be sticky blogposts or a sidebar of links.
+Blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/resources/[slug]`. This section also includes evergreen resources, which could be sticky blog posts or a sidebar of links.
 
 ### Our Mission (`/about`)
 
-Mission statement, background on the project, information about the people behind it, and context for why the site exists.
+Mission statement, background on the project, information about the people behind it, and context for why the site exists. Includes a contact form at the bottom of the page (email and name required, with a message text box).
 
-### Contact (`/contact`)
+### Community Flower Garden (`/garden`)
 
-A simple form to contact us with. Email and name required, with a text box for someone to write their message. Also displays the email (yet to be created) where they can contact us via email.
-
-### Take Action (`/action`)
-
-A more pronounced call-to-action button. This page has current action alerts, for example calling a certain legislator, submitting testimony at a specific hearing, or showing up at a school board meeting. If no current action items, then a word of encouragement (and encouragement to rest).
+The interactive flower drawing tool. Users draw a flower using a simple canvas tool (finger on mobile, mouse on desktop), write an optional short "share your story of inclusion" text, and submit. The section is inviting and low-barrier — it should feel like a creative activity, not a form.
 
 ---
 
 ## 3. Navigation
 
-A simple top nav bar with five items: Explore, Resources, Our Mission, Contact, Take Action. 'Take Action' is a prominent call-to-action button. On mobile, the navigation collapses to a hamburger menu. The project name/logo appears at the left of the nav bar and links home.
+A top nav bar with three text links and one CTA button: **Explore Districts** (`/explore`) · **Resources** (`/resources`) · **Our Mission** (`/about`) + **Take Action** button (anchors to `/#get-involved` on the home page). On mobile, the navigation collapses to a hamburger menu. The project name/logo appears at the left of the nav bar and links home (`/`).
 
-The nav is part of a shared SvelteKit layout (`+layout.svelte`) that wraps all pages. The footer is similarly shared: links to Contact, Resources, About, and any relevant external organizations.
+The nav and footer are both part of the shared SvelteKit layout (`+layout.svelte`) and wrap all pages automatically. The footer includes links to Resources, Our Mission, and any relevant external organizations.
 
 ---
 
@@ -129,13 +124,15 @@ If the writing workflow becomes a bottleneck (multiple contributors, desire for 
 
 ### User Experience
 
-An interactive section on the home page where users can:
+The flower garden lives at `/garden` as its own dedicated page. The home page has a teaser section that displays approved community flowers and links to `/garden` with a "Draw Your Flower" CTA.
+
+On the `/garden` page, users can:
 
 1. Draw a flower using a simple canvas drawing tool (finger on mobile, mouse on desktop)
 2. Optionally write a short text in a "Share your story of inclusion" text box
 3. Submit the drawing + story
 
-The section is inviting and low-barrier — it should feel like a creative activity, not a form.
+The page is inviting and low-barrier — it should feel like a creative activity, not a form. The drawing tool is simple: a few color options, brush size, undo, clear — not a full illustration app.
 
 ### Submission Flow
 
@@ -150,7 +147,6 @@ The site owner (Brianna) reviews submissions in the Netlify Forms dashboard. App
 - No user accounts or authentication
 - No real-time gallery — approved flowers appear after manual review and redeploy
 - No voting, commenting, or social features on submissions
-- The drawing tool is simple: a few color options, brush size, undo, clear — not a full illustration app
 
 ---
 
@@ -170,7 +166,7 @@ The site owner (Brianna) reviews submissions in the Netlify Forms dashboard. App
 ```
 /src
   /routes
-    +layout.svelte          — shared nav, footer
+    +layout.svelte          — shared nav, footer (wraps all pages)
     +page.svelte            — home page
     /explore
       +page.svelte          — data explorer
@@ -178,12 +174,10 @@ The site owner (Brianna) reviews submissions in the Netlify Forms dashboard. App
       +page.svelte          — resources and blog index
       /[slug]
         +page.svelte        — individual post
-    /mission
-      +page.svelte          — our mission/about page
-    /contact
-      +page.svelte          - simple form and email address
-    /action
-      +page.svelte          - current action alerts
+    /about
+      +page.svelte          — our mission, story, contact form
+    /garden
+      +page.svelte          — community flower drawing tool + submission
   /content
     /blog                   — markdown files for posts
   /data
@@ -200,7 +194,6 @@ The site owner (Brianna) reviews submissions in the Netlify Forms dashboard. App
       GeoIndicator.svelte
       DistrictSearch.svelte
       NeighborRow.svelte
-      TakeAction.svelte
       FlowerCanvas.svelte
       BlogCard.svelte
     /utils

@@ -6,12 +6,35 @@
   import VineBorder from '../ui/VineBorder.svelte';
 
   const cols = [
-    { title: 'Resources',    links: ['IEP Guide', 'Know Your Rights', 'Find a Lawyer', 'Blog'] },
-    { title: 'Organization', links: ['About Us', 'Our Team', 'Press', 'Donate'] },
-    { title: 'Contact',      links: ['hello@everyonebelongs.org', 'Support Line', 'Volunteer', 'Partner'] },
+    {
+      title: 'Resources',
+      links: [
+        { label: 'Explore Districts',  href: '/explore' },
+        { label: 'IEP Guides',         href: '/resources' },
+        { label: 'Know Your Rights',   href: '/resources' },
+        { label: 'Policy & Data',      href: '/resources' },
+      ],
+    },
+    {
+      title: 'About',
+      links: [
+        { label: 'Our Mission',        href: '/about' },
+        { label: 'Community Garden',   href: '/garden' },
+        { label: 'Contact Us',         href: '/about' },
+      ],
+    },
+    {
+      title: 'Community',
+      links: [
+        { label: 'hello@yeseveryonebelongs.org', href: 'mailto:hello@everyonebelongs.org' },
+        { label: 'Take Action',        href: '/#get-involved' },
+        { label: 'Draw Your Flower',   href: '/garden' },
+        { label: 'Volunteer',          href: '/#get-involved' },
+      ],
+    },
   ];
 
-  const socials = ['Tw', 'Ig', 'Fb', 'Li'];
+  const socials = ['Bs', 'Ig', 'Ss', 'Li'];
 </script>
 
 <footer>
@@ -46,7 +69,7 @@
         <div>
           <div class="col-title">{col.title}</div>
           {#each col.links as l}
-            <a href="#" class="col-link">{l}</a>
+            <a href={l.href} class="col-link">{l.label}</a>
           {/each}
         </div>
       {/each}
