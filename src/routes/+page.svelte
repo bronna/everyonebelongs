@@ -11,7 +11,7 @@
 <Hero/>
 <ManifestoBand/>
 <DataExplorerTeaser/>
-<FloralInterlude/>
+<!-- <FloralInterlude/> -->
 <BlogPreview/>
 <Community/>
 <GetInvolved/>

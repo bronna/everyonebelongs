@@ -5,6 +5,14 @@
   import FilterDefs from '$lib/components/ui/FilterDefs.svelte';
 </script>
 
+<svelte:head>
+  <script
+    data-goatcounter="https://brianna.goatcounter.com/count"
+    async
+    src="//gc.zgo.at/count.js"
+  ></script>
+</svelte:head>
+
 <FilterDefs/>
 <Nav/>
 <slot/>

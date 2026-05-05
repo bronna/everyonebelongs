@@ -77,13 +77,13 @@
       </div>
     </div>
 
-    <div class="scroll-hint">
+    <!-- <div class="scroll-hint">
       <span>Scroll</span>
       <svg viewBox="0 0 20 28" width="18" style="display:block">
         <path d="M10,2 L10,22 M4,16 L10,24 L16,16" stroke="#F7F3ED" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
       </svg>
     </div>
-  </div>
+  </div> -->
 
   <!-- Meadow strip -->
   <div class="meadow-wrap">

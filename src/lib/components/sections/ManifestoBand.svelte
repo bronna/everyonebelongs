@@ -21,7 +21,9 @@
     { C: Sunflower,   color: '#222', center: '#F5AB54', size: 22 },
   ];
 
-  const TICKER_WORDS = ['VISIBLE','INCLUDED','HEARD','CELEBRATED','EMPOWERED','RESPECTED','SEEN','VALUED','SUPPORTED'];
+  //const TICKER_WORDS = ['VISIBLE','INCLUDED','HEARD','CELEBRATED','EMPOWERED','RESPECTED','SEEN','VALUED','SUPPORTED'];
+  
+  const TICKER_WORDS = ['PREPARING PEOPLE FOR','VIBRANT DEMOCRACY','MEANS','EVERYBODY’S AT THE TABLE','FROM THE TIME THEY’RE LITTLE','- BARBARA BUSWELL'];
 
   const items = TICKER_WORDS.flatMap((w, i) => [
     { type: 'word', text: w, key: `w${i}` },

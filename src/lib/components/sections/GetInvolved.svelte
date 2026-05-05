@@ -78,10 +78,10 @@
     </div>
 
     <div class="signup-block">
-      <RoughBg color="var(--deep-forest)"/>
-      <Sunflower color="rgba(207,164,204,0.18)" center="rgba(207,164,204,0.1)" size={180}
+      <RoughBg color="var(--lavender)"/>
+      <Sunflower color="rgba(207,164,204,0.28)" center="rgba(207,164,204,0.2)" size={180}
         style="position:absolute;right:-40px;bottom:-50px"/>
-      <WildFlower color="rgba(247,243,237,0.08)" center="rgba(247,243,237,0.05)" size={120}
+      <WildFlower color="rgba(247,243,237,0.28)" center="rgba(247,243,237,0.15)" size={120}
         style="position:absolute;left:-20px;top:-30px"/>
       <div class="signup-text">
         <h3 class="signup-heading">Stay in the Fight.</h3>
@@ -104,7 +104,7 @@
               type="submit"
               class="signup-btn"
             >
-              <RoughBg color="var(--lavender)"/>
+              <RoughBg color="var(--poppy)"/>
               <span style="position:relative;z-index:1">Sign Up</span>
             </button>
           </form>
@@ -249,13 +249,13 @@
     text-transform: uppercase;
     font-size: 34px;
     letter-spacing: -0.02em;
-    color: #F7F3ED;
+    color: #222;
     line-height: 1.1;
   }
   .signup-sub {
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
-    color: rgba(247,243,237,0.65);
+    color: rgba(0,0,0,0.65);
     margin-top: 10px;
     font-weight: 300;
   }
@@ -270,7 +270,7 @@
     border: 3px solid rgba(247,243,237,0.25);
     border-right: none;
     background: rgba(247,243,237,0.08);
-    color: #F7F3ED;
+    color: #222;
     outline: none;
     width: 260px;
   }
@@ -286,7 +286,7 @@
     letter-spacing: 0.07em;
     padding: 14px 24px;
     cursor: pointer;
-    color: var(--near-black);
+    color: var(--warm-cream);
     transition: opacity 0.2s;
   }
   .signup-btn:hover { opacity: 0.85; }

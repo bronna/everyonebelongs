@@ -1,5 +1,4 @@
 <script>
-  import Pansy from '../flowers/Pansy.svelte';
   import Daisy from '../flowers/Daisy.svelte';
   import Tulip from '../flowers/Tulip.svelte';
   import Cosmos from '../flowers/Cosmos.svelte';
@@ -10,26 +9,22 @@
   import Clover from '../flowers/Clover.svelte';
   import LeafSprig from '../flowers/LeafSprig.svelte';
   import Squiggle from '../ui/Squiggle.svelte';
-  import RoughBg from '../ui/RoughBg.svelte';
 
   const storiesData = [
     {
       quote: "My daughter was told she couldn't go on the class trip because 'it would be too complicated.' Everyone Belongs helped us fight back. She went — and had the best day of her school year.",
       name: 'Maria T.',
       role: 'Parent, Los Angeles',
-      color: 'var(--sky-blue)',
     },
     {
       quote: 'I have dyslexia and ADHD. For years I was put in the corner and ignored. This organization helped my school actually teach me. I graduated with honors.',
       name: 'Jordan K.',
       role: 'Student, Chicago',
-      color: 'var(--lavender)',
     },
     {
       quote: "We didn't know what an IEP really meant — that it was a legal document. Once we understood our rights, everything changed for our family.",
       name: 'DeShawn & Priya R.',
       role: 'Parents, Atlanta',
-      color: 'var(--mango)',
     },
   ];
 
@@ -60,19 +55,14 @@
       <h2 class="heading">Their Stories</h2>
     </div>
 
-    <div class="card">
-      <RoughBg color={story.color} style="transition:background 0.4s"/>
-      <Pansy color="rgba(34,34,34,0.1)" center="rgba(34,34,34,0.06)" size={90}
-        style="position:absolute;bottom:10px;right:20px;z-index:0"/>
-      <div class="quote-mark">"</div>
-      <div class="card-inner">
-        <p class="quote">"{story.quote}"</p>
-        <div class="attribution">
-          <div class="avatar"></div>
-          <div>
-            <div class="name">{story.name}</div>
-            <div class="role">{story.role}</div>
-          </div>
+    <div class="quote-mark">"</div>
+    <div class="card-inner">
+      <p class="quote">"{story.quote}"</p>
+      <div class="attribution">
+        <div class="avatar"></div>
+        <div>
+          <div class="name">{story.name}</div>
+          <div class="role">{story.role}</div>
         </div>
       </div>
     </div>
@@ -130,18 +120,12 @@
     letter-spacing: -0.02em;
     color: #F7F3ED;
   }
-  .card {
-    position: relative;
-    padding: 52px 60px;
-    box-shadow: 8px 8px 0 rgba(247,243,237,0.12);
-    min-height: 280px;
-  }
   .quote-mark {
     font-family: 'Rubik', sans-serif;
     font-weight: 900;
     font-size: 120px;
     line-height: 0.8;
-    color: rgba(34,34,34,0.08);
+    color: rgba(247,243,237,0.08);
     position: absolute;
     top: 24px;
     left: 40px;
@@ -156,7 +140,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 22px;
     line-height: 1.65;
-    color: var(--near-black);
+    color: #F7F3ED;
     font-style: italic;
     font-weight: 300;
     margin-bottom: 32px;
@@ -170,8 +154,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: var(--near-black);
-    opacity: 0.12;
+    background: rgba(247,243,237,0.15);
   }
   .name {
     font-family: 'Rubik', sans-serif;
@@ -179,12 +162,12 @@
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--near-black);
+    color: #F7F3ED;
   }
   .role {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
-    color: rgba(34,34,34,0.6);
+    color: rgba(247,243,237,0.55);
     margin-top: 2px;
   }
   .dots {
