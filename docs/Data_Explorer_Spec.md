@@ -24,7 +24,10 @@ All district-level metrics from ODE Report Card Media download files. Flat array
 - District name
 - Year
 - LRE placement percentages (four categories: 80%+ in regular classrooms, 40–79%, <40%, separate settings)
+- IEP percentage (students with IEPs as a percentage of total enrollment)
 - Other SPP/APR indicators (graduation rate, dropout rate, suspension/expulsion rates for students with disabilities, etc.)
+- Disability category counts or percentages (e.g., autism, SLD, intellectual disability, speech/language, etc.) — used to compute high/medium/low cost support tier groupings at runtime
+- Disproportionality metrics: discipline disproportionality by race, identification disproportionality by race (Indicators 4 and 9/10)
 - Contextual fields (total enrollment, special education child count, demographic breakdowns)
 
 ### `geography.json`
@@ -77,9 +80,21 @@ A search input with a prompt like "Find your school district." The user types, g
 
 The district's most recent year of data appears. The hero visual is a **donut chart** showing LRE placement percentages. The donut shape carries an intentional message — every student is part of the whole — with four segments representing the federal LRE categories. The center of the donut displays a headline number (e.g., "68% in regular classrooms most of the day").
 
-A small **geo indicator** — a static SVG map of Oregon's outline with a dot marking the selected district's centroid — appears next to or above the district name. Sized small (120–150px wide), for orientation, not exploration. Neighbor dots may also appear.
+A small **geo indicator** — a static SVG map of Oregon's outline with a dot marking the selected district's centroid — appears next to or above the district name. Sized small (120–150px wide), for orientation, not exploration.
 
-Secondary metrics (graduation rate, suspension rate, child count, enrollment) appear below as compact numerical displays with plain-language labels. Every metric has a one-sentence explanation available on tap.
+Three secondary metrics appear below the donut as compact numerical displays with plain-language labels:
+
+1. **IEP percentage** — what proportion of the district's students have IEPs, along with the state average
+2. **Graduation rate** — for students with IEPs, along with the state average
+
+**"More details" expandable section**: A tap target below the secondary metrics (e.g., "See more about this district") reveals additional data, collapsed by default:
+
+- **Disproportionate discipline** — whether students with disabilities are disciplined at disproportionate rates
+- **Identification disproportionality by race** — whether students from certain racial groups are identified as having a disability at disproportionate rates.
+- **Support needs profile** — three horizontal percentage bars for high, medium, and low support tiers, with specific IEP categories listed under each bar. A brief disclaimer notes: "These groupings are approximate. Individual student support needs vary widely within each category." The tier grouping logic lives in a utility function.
+- Any additional metrics added in the future.
+
+Every metric has a one-sentence explanation available on tap. The disproportionate discipline and identification disproportionality metrics have an additional **visible inline caveat** (e.g., "Data may not be available for smaller districts") because of n-size reporting thresholds, plus a fuller explanation on tap.
 
 ### Step 3: State Context
 
@@ -91,7 +106,9 @@ Neighboring districts appear automatically below — no second search required. 
 
 ### Step 5: Trends
 
-A collapsed-by-default toggle reveals **sparklines** showing the district's LRE percentages over available years. Default view is most recent year only; trend is opt-in.
+A section shows a single **sparkline** showing the district's 80%+ LRE percentage (the most inclusive placement category) over available years. This is the one trend line that matters most.
+
+An **"Expand trends"** tap target below the sparkline reveals additional trend lines: the other three LRE categories, IEP percentage, and graduation rate for students with IEPs. Collapsed by default - only for users who want the full picture.
 
 ### Step 6: Take Action
 
@@ -143,9 +160,9 @@ At build time, SvelteKit pre-renders everything into plain HTML, CSS, and JS. No
 ```
 /src/data/              — districts.json, geography.json, crosswalk.json
 /src/lib/components/    — DistrictSearch, DonutChart, Beeswarm, SparkLine,
-                          NeighborRow, GeoIndicator, TakeAction
+                          NeighborRow, GeoIndicator, TakeAction, MetricCard, MoreDetails, SupportNeedsProfile
 /src/lib/utils/         — Pure functions: get district by ID, get neighbors,
-                          get state distribution, crosswalk lookups
+                          get state distribution, crosswalk lookups, compute support tier groupings
 /src/routes/            — Site pages (home with teaser, /explore for full explorer,
                           blog routes)
 /scripts/               — Python data prep scripts
@@ -157,13 +174,15 @@ No state management library. A couple of Svelte writable stores:
 
 - Selected district ID
 - Whether trend view is expanded
+- Whether expanded trends are showing
 - Whether state context view is showing
+- Whether "more details" section is expanded
 
 When the user picks a district, one store updates and everything reactive downstream re-renders.
 
 ### Geo indicator
 
-A small static SVG map of Oregon's outline with a dot at the selected district's centroid. D3 geo projection functions convert lat/lon to pixel positions. The Oregon outline is a single static path checked into the repo. Neighbor dots may also appear. Not interactive — just orientation. The projection and geography data are available for future interactive map features.
+A small static SVG map of Oregon's outline with a dot at the selected district's centroid. D3 geo projection functions convert lat/lon to pixel positions. The Oregon outline is a single static path checked into the repo. Not interactive — just orientation. The projection and geography data are available for future interactive map features.
 
 ### D3 usage
 
@@ -182,6 +201,7 @@ No `d3.select()`, no `enter/exit/update`. Svelte owns the DOM.
 - Small multiples (mini donuts for neighbors) for compact comparison
 - Sparklines for trends — minimal space, maximum information
 - Beeswarm for state distribution — visually intuitive even for non-data-literate users
+- Horizontal percentage bars for support needs tiers — simple, scannable, visually lightweight
 - All touch targets sized for thumbs, not cursors
 
 ---
@@ -193,7 +213,7 @@ Python scripts in `/scripts/` that transform raw source data into the three JSON
 ### `prepare_districts.py`
 
 - Input: ODE Report Card Media download files (CSV)
-- Process: Read with pandas, filter/rename columns to match plain-language field names, normalize district IDs
+- Process: Read with pandas, filter columns to match plain-language field names, normalize district IDs
 - Output: `districts.json`
 - Frequency: Once a year when new data is published
 
