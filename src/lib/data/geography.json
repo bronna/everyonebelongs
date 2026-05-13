@@ -1,0 +1,50 @@
+[
+  {
+    "geoid": "4100330",
+    "name": "Portland Public Schools",
+    "county": "Multnomah",
+    "lat": 45.523,
+    "lng": -122.676,
+    "neighbors": ["4100570", "4101140"]
+  },
+  {
+    "geoid": "4100390",
+    "name": "Eugene School District 4J",
+    "county": "Lane",
+    "lat": 44.052,
+    "lng": -123.087,
+    "neighbors": []
+  },
+  {
+    "geoid": "4101980",
+    "name": "Salem-Keizer School District 24J",
+    "county": "Marion",
+    "lat": 44.942,
+    "lng": -123.035,
+    "neighbors": ["4100570"]
+  },
+  {
+    "geoid": "4100570",
+    "name": "Beaverton School District 48J",
+    "county": "Washington",
+    "lat": 45.487,
+    "lng": -122.804,
+    "neighbors": ["4100330", "4101980"]
+  },
+  {
+    "geoid": "4100960",
+    "name": "Medford School District 549C",
+    "county": "Jackson",
+    "lat": 42.326,
+    "lng": -122.875,
+    "neighbors": []
+  },
+  {
+    "geoid": "4100600",
+    "name": "Bend-La Pine Schools",
+    "county": "Deschutes",
+    "lat": 44.058,
+    "lng": -121.315,
+    "neighbors": []
+  }
+]

@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import Pansy from '../flowers/Pansy.svelte';
   import Tulip from '../flowers/Tulip.svelte';
   import Daisy from '../flowers/Daisy.svelte';
@@ -8,6 +9,14 @@
   import WildFlower from '../flowers/WildFlower.svelte';
   import Sunflower from '../flowers/Sunflower.svelte';
   import Clover from '../flowers/Clover.svelte';
+
+  let scrollY = 0;
+
+  onMount(() => {
+    const update = () => { scrollY = window.scrollY; };
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  });
 
   const TICKER_FLOWERS = [
     { C: Pansy,       color: '#222', center: '#F5AB54', size: 24 },
@@ -23,7 +32,7 @@
 
   //const TICKER_WORDS = ['VISIBLE','INCLUDED','HEARD','CELEBRATED','EMPOWERED','RESPECTED','SEEN','VALUED','SUPPORTED'];
   
-  const TICKER_WORDS = ['PREPARING PEOPLE FOR','VIBRANT DEMOCRACY','MEANS','EVERYBODY’S AT THE TABLE','FROM THE TIME THEY’RE LITTLE','- BARBARA BUSWELL'];
+  const TICKER_WORDS = ['PREPARING PEOPLE FOR VIBRANT DEMOCRACY MEANS EVERYBODY’S AT THE TABLE FROM THE TIME THEY’RE LITTLE','- BARBARA BUSWELL'];
 
   const items = TICKER_WORDS.flatMap((w, i) => [
     { type: 'word', text: w, key: `w${i}` },
@@ -32,7 +41,7 @@
 </script>
 
 <div class="band">
-  <div class="track">
+  <div class="track" style="transform: translateX(calc(15vw - {scrollY}px))">
     {#each [0, 1] as rep}
       <div class="rep">
         {#each items as item (item.key + rep)}
@@ -59,15 +68,11 @@
     z-index: 3;
     position: relative;
   }
-  @keyframes scrollLeft {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-120%); }
-  }
   .track {
     display: flex;
     white-space: nowrap;
     align-items: center;
-    animation: scrollLeft 40s linear infinite;
+    will-change: transform;
   }
   .rep {
     display: inline-flex;
@@ -79,6 +84,7 @@
     font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    word-spacing: 0.4em;
     color: var(--near-black);
     padding: 0 18px;
     display: inline-flex;

@@ -160,6 +160,7 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     padding: 10px 22px;
+    text-decoration: none;
     cursor: pointer;
     color: #fff;
     box-shadow: 3px 3px 0 var(--near-black);
