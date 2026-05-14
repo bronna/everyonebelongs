@@ -6,7 +6,6 @@
   import BellFlower from '../flowers/BellFlower.svelte';
   import WildFlower from '../flowers/WildFlower.svelte';
   import Clover from '../flowers/Clover.svelte';
-  import Sunflower from '../flowers/Sunflower.svelte';
   import SmallLeaf from '../flowers/SmallLeaf.svelte';
   import Squiggle from '../ui/Squiggle.svelte';
   import Underline from '../ui/Underline.svelte';
@@ -20,13 +19,6 @@
     { bg: 'var(--mango)',       fg: '#222',    FlowerComp: Daisy,     fc: 'rgba(34,34,34,0.15)',      label: 'Spread the Word', body: 'Follow us, share our work, and bring the conversation to your community.', cta: 'Share Now'     },
   ];
 
-  let email = '';
-  let submitted = false;
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (email) submitted = true;
-  }
 </script>
 
 <section class="get-involved" id="get-involved">
@@ -74,41 +66,6 @@
             </div>
           </svelte:element>
         {/each}
-      </div>
-    </div>
-
-    <div class="signup-block">
-      <RoughBg color="var(--lavender)"/>
-      <Sunflower color="rgba(207,164,204,0.28)" center="rgba(207,164,204,0.2)" size={180}
-        style="position:absolute;right:-40px;bottom:-50px"/>
-      <WildFlower color="rgba(247,243,237,0.28)" center="rgba(247,243,237,0.15)" size={120}
-        style="position:absolute;left:-20px;top:-30px"/>
-      <div class="signup-text">
-        <h3 class="signup-heading">Stay in the Fight.</h3>
-        <p class="signup-sub">Get updates on advocacy wins, resources, and how to take action.</p>
-      </div>
-      <div style="position:relative;z-index:1">
-        {#if submitted}
-          <div class="submitted">
-            <Pansy color="var(--mango)" center="#F7F3ED" size={28}/> You're in! Thank you.
-          </div>
-        {:else}
-          <form on:submit={handleSubmit} class="signup-form">
-            <input
-              type="email"
-              bind:value={email}
-              placeholder="your@email.com"
-              class="email-input"
-            />
-            <button
-              type="submit"
-              class="signup-btn"
-            >
-              <RoughBg color="var(--poppy)"/>
-              <span style="position:relative;z-index:1">Sign Up</span>
-            </button>
-          </form>
-        {/if}
       </div>
     </div>
   </div>
@@ -226,78 +183,5 @@
     align-items: center;
     gap: 8px;
     margin-top: 8px;
-  }
-  .signup-block {
-    position: relative;
-    margin-top: 80px;
-    padding: 56px 64px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 6px 6px 0 var(--near-black);
-    overflow: hidden;
-  }
-  .signup-text {
-    position: relative;
-    z-index: 1;
-  }
-  .signup-heading {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 34px;
-    letter-spacing: -0.02em;
-    color: #222;
-    line-height: 1.1;
-  }
-  .signup-sub {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: rgba(0,0,0,0.65);
-    margin-top: 10px;
-    font-weight: 300;
-  }
-  .signup-form {
-    display: flex;
-    gap: 0;
-  }
-  .email-input {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    padding: 14px 20px;
-    border: 3px solid rgba(247,243,237,0.25);
-    border-right: none;
-    background: rgba(247,243,237,0.08);
-    color: #222;
-    outline: none;
-    width: 260px;
-  }
-  .email-input::placeholder { color: rgba(247,243,237,0.45); }
-  .signup-btn {
-    position: relative;
-    background: transparent;
-    border: none;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    padding: 14px 24px;
-    cursor: pointer;
-    color: var(--warm-cream);
-    transition: opacity 0.2s;
-  }
-  .signup-btn:hover { opacity: 0.85; }
-  .submitted {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 18px;
-    color: var(--mango);
-    display: flex;
-    align-items: center;
-    gap: 12px;
   }
 </style>

@@ -2,9 +2,9 @@
 
 ## 1. Overview & Identity
 
-Everyone Belongs is an advocacy and resource hub focused on inclusion in public schools, aimed at parents of students with IEPs and community members. It combines data transparency (via the Inclusion Data Explorer), advocacy content (via a blog), and community participation (via a flower drawing + story feature) into a single site.
+Everyone Belongs is an advocacy and resource hub focused on inclusion in public schools, aimed at parents of students with IEPs and community members. It combines data transparency (via the Inclusion Data Explorer), resources on implementing inclusion (via a blog), advocacy content (via blog), and community participation (via a flower drawing + story feature) into a single site.
 
-The site is published under a new project/organization name -- Everyone Belongs. It is not a personal blog or tied to an existing organization.
+The site is published under the project/organization name 'Everyone Belongs.' It is not a personal blog or tied to an existing organization.
 
 The tone is a mix of authoritative, friendly, defiant, and warm: data and policy content is clear, factual, and grounded; parent-facing content is welcoming, empowering, and accessible. The site does not editorialize within the data explorer itself but does take a clear advocacy stance in blog content and resource recommendations.
 
@@ -30,7 +30,7 @@ The full Inclusion Data Explorer as specified in the separate explorer design sp
 
 ### Resources (`/resources`)
 
-Blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/resources/[slug]`. This section also includes evergreen resources, which could be sticky blog posts or a sidebar of links.
+Blog posts with category tags (e.g., Policy, Data, Stories, Resources). Each post is a Markdown/MDX file in the repo, rendered at build time. Individual posts live at `/resources/[slug]`. This section also includes evergreen resources, which could be sticky posts or a sidebar of links.
 
 ### Our Mission (`/about`)
 
@@ -82,7 +82,7 @@ The "Everyone Belongs" wordmark composed of hand-drawn flowers. Used as a hero i
 - 80%+ in regular classrooms → Deep Forest (the aspiration)
 - 40–79% in regular classrooms → Mango (intermediate)
 - Less than 40% → Poppy (draws attention)
-- Separate settings → Lavender (distinct, not alarming)
+- Separate settings → Lavender (distinct)
 
 ### Typography
 
@@ -226,9 +226,9 @@ Push to GitHub → Netlify auto-builds and deploys. No CI/CD configuration beyon
 
 - **No Ghost CMS at launch.** Markdown in the repo. Migrate later if needed.
 - **No user accounts or authentication.** The site is fully public and stateless.
-- **No commenting system on blog posts.** Could add later (e.g., Giscus for GitHub-based comments) but not at launch.
+- **No commenting system on blog posts.** Could add later but not at launch.
 - **No real-time flower gallery.** Submissions are manually reviewed and added.
-- **No search functionality across the site.** Blog is browsable by category; the explorer has its own district search. Full-site search is a future feature.
+- **No search functionality across the site.** Blog is browsable by category; the explorer has its own district search.
 - **No multi-language support.** English only for now.
 - **No dark mode.** The warm cream + forest palette is designed for light mode. Dark mode is a future consideration.
 
