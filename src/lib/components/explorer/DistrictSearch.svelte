@@ -1,8 +1,8 @@
 <script>
-  /** @type {{ districts: any[], onSelect: (id: string) => void }} */
-  let { districts, onSelect } = $props();
+  /** @type {{ districts: any[], onSelect: (id: string) => void, initialName?: string }} */
+  let { districts, onSelect, initialName = '' } = $props();
 
-  let query = $state('');
+  let query = $state(initialName);
   let open = $state(false);
   let highlighted = $state(0);
   let inputEl = $state(null);

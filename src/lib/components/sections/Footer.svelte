@@ -70,8 +70,7 @@
         </div>
         <div class="contact-divider"></div>
         <div class="contact-block">
-          <span class="contact-type">General</span>
-          <a href="mailto:hello@everyonebelongs.org" class="contact-email">hello@everyonebelongs.org</a>
+          <a href="mailto:hello@yeseveryonebelongs.org" class="contact-email">hello@yeseveryonebelongs.org</a>
         </div>
         <div class="contact-divider"></div>
       </div>
@@ -79,7 +78,7 @@
 
     <!-- Social strip -->
     <div class="social-strip">
-      <span class="social-label">Find us elsewhere</span>
+      <span class="social-label">Find us on</span>
       <div class="social-chips">
         {#each socials as s}
           <a href={s.href} class="social-chip" target="_blank" rel="noopener noreferrer">
@@ -105,7 +104,7 @@
         <a href="/privacy" class="legal-link">Privacy</a>
         <a href="/accessibility" class="legal-link">Accessibility</a>
         <span class="dot">·</span>
-        <span class="tagline">Made with love &amp; defiance.</span>
+        <span class="tagline">Made with love &amp; defiance</span>
       </div>
     </div>
 

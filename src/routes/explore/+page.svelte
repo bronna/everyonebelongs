@@ -12,7 +12,7 @@
 
   let { data } = $props();
 
-  let selectedId = $state(null);
+  let selectedId = $state(data.selectedId ?? null);
 
   const district = $derived(selectedId ? getDistrictById(selectedId, data.districts) : null);
   const geo = $derived(district ? getGeoEntry(district.id, data.geography, data.crosswalk) : null);
@@ -71,7 +71,11 @@
 <section class="search-section">
   <div class="search-inner">
     <p class="search-prompt">Find your school district</p>
-    <DistrictSearch districts={data.districts} onSelect={(id) => (selectedId = id)} />
+    <DistrictSearch
+      districts={data.districts}
+      onSelect={(id) => (selectedId = id)}
+      initialName={data.selectedId ? (data.districts.find(d => d.id === data.selectedId)?.name ?? '') : ''}
+    />
   </div>
 </section>
 

@@ -1,7 +1,9 @@
 <script>
+  import { goto } from '$app/navigation';
   import Squiggle from '../ui/Squiggle.svelte';
   import SmallLeaf from '../flowers/SmallLeaf.svelte';
-  import RoughBg from '../ui/RoughBg.svelte';
+  import DistrictSearch from '../explorer/DistrictSearch.svelte';
+  import districts from '../../../data/districts.json';
 </script>
 
 <section class="teaser">
@@ -18,20 +20,7 @@
       Search Oregon school districts to see how students with IEPs spend their school day — and how your district compares to its neighbors.
     </p>
 
-    <div class="search-row">
-      <input
-        class="search-input"
-        type="text"
-        placeholder="Search by district name…"
-        disabled
-      />
-      <button class="search-btn" disabled>
-        <RoughBg color="var(--deep-forest)"/>
-        <span style="position:relative;z-index:1">Explore</span>
-      </button>
-    </div>
-
-    <p class="placeholder-note">⚙ Data Explorer coming soon — full interactive version at <code>/explore</code></p>
+    <DistrictSearch {districts} onSelect={(id) => goto(`/explore?district=${id}`)} />
   </div>
 </section>
 
@@ -77,51 +66,5 @@
     font-weight: 300;
     max-width: 560px;
     margin: 0 auto 48px;
-  }
-  .search-row {
-    display: flex;
-    gap: 12px;
-    max-width: 540px;
-    margin: 0 auto;
-  }
-  .search-input {
-    flex: 1;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 16px 20px;
-    border: 2px solid var(--deep-forest);
-    background: #fff;
-    color: var(--near-black);
-    outline: none;
-    box-shadow: 3px 3px 0 var(--deep-forest);
-    opacity: 0.55;
-    cursor: not-allowed;
-  }
-  .search-btn {
-    position: relative;
-    background: transparent;
-    border: none;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    padding: 16px 28px;
-    color: #F7F3ED;
-    box-shadow: 3px 3px 0 var(--near-black);
-    cursor: not-allowed;
-    opacity: 0.55;
-  }
-  .placeholder-note {
-    margin-top: 28px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: rgba(26, 107, 74, 0.6);
-    font-style: italic;
-  }
-  .placeholder-note code {
-    font-style: normal;
-    font-weight: 600;
   }
 </style>
