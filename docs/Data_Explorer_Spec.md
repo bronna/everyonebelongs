@@ -1,24 +1,24 @@
-# Oregon Inclusion Data Explorer — Design Spec
+# Inclusion Data Explorer — Design Spec
 
 ## 1. Overview & Purpose
 
-The Oregon Inclusion Data Explorer is a mobile-first web application that makes federal IDEA data and Oregon Department of Education data visible and understandable at the district level. Its primary audience is parents of students with IEPs who may have limited experience reading data visualizations or navigating education policy terminology.
+The Inclusion Data Explorer is a mobile-first web application that makes federal IDEA data and states' Department of Education data visible and understandable at the district level. Its primary audience is parents of students with IEPs who may have limited experience reading data visualizations or navigating education policy terminology.
 
 The tool is not an advocacy platform itself — it doesn't editorialize or argue for particular policies. Instead, it presents the data clearly and then serves as a jumping-off point, linking users to advocacy resources, guides, and specific questions they can bring to their district or school board. The implicit message is: "Here's what the numbers say. Here's what they don't say. Here's what to do next."
 
 The initial version covers Oregon only, but the data architecture (file structure, naming conventions, component design) should be state-agnostic so that adding another state later means adding a data folder and a configuration file, not rewriting components.
 
-The explorer is one piece of a larger SvelteKit site that includes a CMS-driven blog (Markdown/MDX or Ghost as headless CMS). A preview/teaser appears on the home page (e.g., the district search input with a headline like "How inclusive is your district?") linking to the full explorer at its own route (e.g., `/explore`).
+The explorer is one piece of a larger SvelteKit site that includes a CMS-driven blog (Markdown/MDX or Ghost as headless CMS). A preview/teaser appears on the home page (e.g., the district search input with a headline like "How inclusive is your district?") with a search bar linking to, and auto-populating with the selection, the full explorer at its own route (e.g., `/explore`).
 
 ---
 
 ## 2. Data Model
 
-The data lives as flat JSON files in `/src/data/`. Three files.
+The data lives as flat JSON files in `/src/data/`. There are three files:
 
 ### `districts.json`
 
-All district-level metrics from ODE Report Card Media download files. Flat array, one row per district per year. Keyed on the ODE district ID. Fields include:
+All district-level metrics derived from ODE Report Card Media download files. Flat array, one row per district per year. Keyed on the ODE district ID. Fields include:
 
 - ODE district ID
 - District name
@@ -27,7 +27,7 @@ All district-level metrics from ODE Report Card Media download files. Flat array
 - IEP percentage (students with IEPs as a percentage of total enrollment)
 - Other SPP/APR indicators (graduation rate, dropout rate, suspension/expulsion rates for students with disabilities, etc.)
 - Disability category counts or percentages (e.g., autism, SLD, intellectual disability, speech/language, etc.) — used to compute high/medium/low cost support tier groupings at runtime
-- Disproportionality metrics: discipline disproportionality by race, identification disproportionality by race (Indicators 4 and 9/10)
+- Disproportionality metrics: discipline disproportionality by race, identification disproportionality by race
 - Contextual fields (total enrollment, special education child count, demographic breakdowns)
 
 ### `geography.json`
@@ -68,7 +68,7 @@ This is a few array lookups — no joins, no query language, nothing clever.
 
 ## 3. User Flow
 
-The data explorer is a self-contained component that renders at its own route (e.g., `/explore`), with a teaser on the home page linking to it. The explorer does not own the site's layout, header, or footer — it slots into the larger SvelteKit site.
+The data explorer is a self-contained component that renders at its own route (e.g., `/explore`), with a teaser on the home page linking to it, and autopopulating the selected district if the user selects one. The explorer does not own the site's layout, header, or footer — it slots into the larger SvelteKit site.
 
 Everything happens in a single scrollable view that progressively reveals detail as the user makes choices.
 
@@ -80,9 +80,16 @@ A search input with a prompt like "Find your school district." The user types, g
 
 The district's most recent year of data appears. The hero visual is a **donut chart** showing LRE placement percentages. The donut shape carries an intentional message — every student is part of the whole — with four segments representing the federal LRE categories. The center of the donut displays a headline number (e.g., "68% in regular classrooms most of the day").
 
+**Donut chart segment color mapping:**
+
+- 80%+ in regular classrooms → Deep Forest (the aspiration)
+- 40–79% in regular classrooms → Mango (intermediate)
+- Less than 40% → Poppy (draws attention)
+- Separate settings → Lavender (distinct)
+
 A small **geo indicator** — a static SVG map of Oregon's outline with a dot marking the selected district's centroid — appears next to or above the district name. Sized small (120–150px wide), for orientation, not exploration.
 
-Three secondary metrics appear below the donut as compact numerical displays with plain-language labels:
+Two secondary metrics appear below the donut as compact numerical displays with plain-language labels:
 
 1. **IEP percentage** — what proportion of the district's students have IEPs, along with the state average
 2. **Graduation rate** — for students with IEPs, along with the state average
@@ -159,7 +166,7 @@ At build time, SvelteKit pre-renders everything into plain HTML, CSS, and JS. No
 
 ```
 /src/data/              — districts.json, geography.json, crosswalk.json
-/src/lib/components/    — DistrictSearch, DonutChart, Beeswarm, SparkLine,
+/src/lib/components/explorer    — DistrictSearch, DonutChart, Beeswarm, SparkLine,
                           NeighborRow, GeoIndicator, TakeAction, MetricCard, MoreDetails, SupportNeedsProfile
 /src/lib/utils/         — Pure functions: get district by ID, get neighbors,
                           get state distribution, crosswalk lookups, compute support tier groupings
